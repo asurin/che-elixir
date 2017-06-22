@@ -35,4 +35,6 @@ RUN sudo apt-get -y autoremove && \
     sudo apt-get -y autoclean  && \
     sudo rm -rf /var/lib/apt/lists/* 
     
+EXPOSE 80 8080 4000
+
 CMD sudo service postgresql start && tail -f /dev/null
