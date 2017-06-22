@@ -1,8 +1,12 @@
 FROM eclipse/ubuntu_jre
-# Use asdf-vm to install erlang and elixir
 
 MAINTAINER sunder.narayanaswamy@gmail.com
 
+
+ARG ERLANG_VER 19.3
+ARG ELIXIR_VER 1.4.5
+
+# Use asdf-vm to install erlang and elixir
 # Install asdf dependencies 
 # Install postgres & node required for Phoenix framework
 RUN sudo apt-get update && sudo apt-get install -y \
@@ -11,8 +15,6 @@ RUN sudo apt-get update && sudo apt-get install -y \
 	nodejs npm
 
 ENV HOME /home/user
-ENV ERLANG_VER 19.3
-ENV ELIXIR_VER 1.4.5
 
 WORKDIR $HOME
 
