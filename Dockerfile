@@ -1,8 +1,7 @@
-FROM eclipse/ubuntu_jre
+FROM eclipse/ubuntu_jdk8
 # Use asdf-vm to install erlang and elixir
 
 MAINTAINER sunder.narayanaswamy@gmail.com
-
 
 ENV ERLANG_VER 19.3
 ENV ELIXIR_VER 1.4.4
@@ -10,10 +9,9 @@ ENV ELIXIR_VER 1.4.4
 # Install asdf dependencies 
 # Install postgres & node required for Phoenix framework
 RUN sudo apt-get update && sudo apt-get install -y \
-	automake autoconf libreadline-dev libncurses-dev libssl-dev libyaml-dev libxslt-dev libffi-dev libtool unixodbc-dev \
+	build-essential automake autoconf libreadline-dev libncurses-dev libssl-dev libyaml-dev libxslt-dev libffi-dev libtool unixodbc-dev \
 	postgresql postgresql-contrib \
-	nodejs npm \
-	nginx
+	nodejs npm inotify-tools
 
 ENV HOME /home/user
 
@@ -34,8 +32,6 @@ RUN sudo apt-get -y autoremove && \
     sudo apt-get -y clean  && \
     sudo apt-get -y autoclean  && \
     sudo rm -rf /var/lib/apt/lists/* 
-    
-EXPOSE 8080
 
 EXPOSE 4000
 
