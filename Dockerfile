@@ -13,7 +13,7 @@ RUN sudo apt-get update && sudo apt-get install -y \
 	automake autoconf libreadline-dev libncurses-dev libssl-dev libyaml-dev libxslt-dev libffi-dev libtool unixodbc-dev \
 	postgresql postgresql-contrib \
 	nodejs npm \
-	lighttpd
+	nginx
 
 ENV HOME /home/user
 
