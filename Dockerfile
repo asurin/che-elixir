@@ -1,18 +1,19 @@
 FROM eclipse/ubuntu_jre
+# Use asdf-vm to install erlang and elixir
 
 MAINTAINER sunder.narayanaswamy@gmail.com
 
 
-ARG ERLANG_VER 19.3
-ARG ELIXIR_VER 1.4.5
+ENV ERLANG_VER 19.3
+ENV ELIXIR_VER 1.4.5
 
-# Use asdf-vm to install erlang and elixir
 # Install asdf dependencies 
 # Install postgres & node required for Phoenix framework
 RUN sudo apt-get update && sudo apt-get install -y \
 	automake autoconf libreadline-dev libncurses-dev libssl-dev libyaml-dev libxslt-dev libffi-dev libtool unixodbc-dev \
 	postgresql postgresql-contrib \
-	nodejs npm
+	nodejs npm \
+	lighttpd
 
 ENV HOME /home/user
 
@@ -32,7 +33,6 @@ RUN bash -c "asdf plugin-add erlang https://github.com/asdf-vm/asdf-erlang.git" 
 RUN sudo apt-get -y autoremove && \
     sudo apt-get -y clean  && \
     sudo apt-get -y autoclean  && \
-    sudo rm -rf /var/lib/apt/lists/* && \
-    sudo rm -rf /var/lib/dpkg/*
-
+    sudo rm -rf /var/lib/apt/lists/* 
+    
 CMD sudo service postgresql start && tail -f /dev/null
