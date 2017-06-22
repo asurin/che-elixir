@@ -5,7 +5,7 @@ MAINTAINER sunder.narayanaswamy@gmail.com
 
 
 ENV ERLANG_VER 19.3
-ENV ELIXIR_VER 1.4.5
+ENV ELIXIR_VER 1.4.4
 
 # Install asdf dependencies 
 # Install postgres & node required for Phoenix framework
@@ -35,6 +35,8 @@ RUN sudo apt-get -y autoremove && \
     sudo apt-get -y autoclean  && \
     sudo rm -rf /var/lib/apt/lists/* 
     
-EXPOSE 80 8080 4000
+EXPOSE 8080
+
+EXPOSE 4000
 
 CMD sudo service postgresql start && tail -f /dev/null
