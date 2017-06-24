@@ -1,4 +1,4 @@
-FROM eclipse/ubuntu_jdk8
+FROM eclipse/ubuntu_jre
 # Use asdf-vm to install erlang and elixir
 
 MAINTAINER sunder.narayanaswamy@gmail.com
